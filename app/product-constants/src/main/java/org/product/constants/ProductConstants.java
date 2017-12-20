@@ -7,4 +7,5 @@ package org.product.constants;
 public class ProductConstants 
 {
 	public static String PRODUCT_VERSION="1.0";	 
+	public static String PRODUCT_NAME = "getFast";
 }

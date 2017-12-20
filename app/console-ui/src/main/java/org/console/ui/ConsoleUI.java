@@ -13,7 +13,7 @@ public class ConsoleUI
     public static void main( String[] args )
     {
     	displayNewLineWithPound();    	
-    	displayInfo("ss","left",true,"Product-Version : "+ProductConstants.PRODUCT_VERSION);
+    	displayInfo("Product-Version : "+ProductConstants.PRODUCT_VERSION);
     	displayNewLineWithPound();
     }
     
@@ -25,29 +25,19 @@ public class ConsoleUI
     	}
     }
     
-    public static void displayInfo(String type,String alignment,boolean spaceWithdashed, String content){
+    public static void displayInfo(String content){
     	System.out.println();
     	String lineBeginninAndEnd="# ";
     	int contentLength = content.length();
     	System.out.print(lineBeginninAndEnd);
     	int whiteSpaces = displayColumnCount - contentLength - lineBeginninAndEnd.length()-1;
-    	char whiteSpaceCharacterToPrint = (spaceWithdashed == true) ? '-' : ' ';
+    	char whiteSpaceCharacterToPrint = ' ';
     		//fill with the spaces with dotted
-    	
-    		if (type == "newLine"){
-    			for(int i=1;i<=displayColumnCount;i++){
-    				System.out.print(themeType);
-    			}
-    		}
-
-    		else if (alignment.equalsIgnoreCase("left")){
     			System.out.print(content);
     			for(int i=1;i<=whiteSpaces;i++){
     				System.out.print(whiteSpaceCharacterToPrint);
     			}
-    		}
     	System.out.print(lineBeginninAndEnd);
-    	}
-        
-    	
     }
+        
+}

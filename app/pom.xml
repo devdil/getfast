@@ -13,5 +13,6 @@
     <module>meta-file-service</module>
     <module>console-ui</module>
     <module>product-constants</module>
+    <module>download-manager</module>
   </modules>
 </project>
