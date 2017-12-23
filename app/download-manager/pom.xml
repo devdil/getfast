@@ -22,5 +22,15 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+     <dependency>
+    	<groupId>com.getFast.app</groupId>
+  		<artifactId>product-constants</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>4.5.4</version>
+	</dependency>
   </dependencies>
 </project>

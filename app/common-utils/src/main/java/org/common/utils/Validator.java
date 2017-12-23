@@ -7,37 +7,34 @@ import org.product.constants.CommandLineArgs;
 
 public class Validator {
 
-	public static boolean areCommandLineArgsValid(String[] args) {
+	public static boolean areCommandLineArgsValid(String[] commandLineArgsFromTheCommandLine) {
 
-		boolean  foundMatch = false;
-		boolean  invalidMatchFound = false;
+		boolean  commandLineArgMatch = false;
+		boolean  atleastOneMismatch = false;
 		List<String> invalidListofCommandLineArgs = new ArrayList<String>();
-		for (String arg : args) {
+		for (String commandLineArg : commandLineArgsFromTheCommandLine) {
 
 			for (CommandLineArgs commandLineArgConstant : CommandLineArgs.values()) {
-				if (arg.equalsIgnoreCase(commandLineArgConstant.commandLineArgAbbreviated())) {
-					foundMatch = true;
+				if (commandLineArg.equalsIgnoreCase(commandLineArgConstant.commandLineArgAbbreviated())) {
+					commandLineArgMatch = true;
 					break;
 				}
 			}
 			
-			if (!foundMatch) {
-				invalidListofCommandLineArgs.add(arg);
-				if (!invalidMatchFound)
-					invalidMatchFound = true;
+			if (!commandLineArgMatch) {
+				invalidListofCommandLineArgs.add(commandLineArg);
+				if (!commandLineArgMatch)
+					atleastOneMismatch = true;
 			}
 		
-			foundMatch = false;
+			commandLineArgMatch = false;
 			
 		}
-		
-		
-		if (invalidMatchFound) {
+		if (atleastOneMismatch) {
 			UsageHelper usageHelper = new UsageHelper();
 			usageHelper.showUsage();
 			return false;
 		}
-		
 		else
 			return true;
 

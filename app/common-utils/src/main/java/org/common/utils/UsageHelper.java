@@ -10,7 +10,7 @@ public class UsageHelper {
 		ConsoleUI.displayNewLineWithPound();
 		ConsoleUI.displayInfo("Usage ");
 		ConsoleUI.displayInfo(" ");
-		ConsoleUI.displayInfo(ProductConstants.PRODUCT_NAME+" urltoDownload");
+		ConsoleUI.displayInfo(ProductConstants.PRODUCT_NAME+" http://foobar.com/file.zip --argument=<value>");
 		ConsoleUI.displayInfo(" ");
 		ConsoleUI.displayInfo("The arguments that can be supplied to the utility are:");
 		ConsoleUI.displayInfo(" ");
