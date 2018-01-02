@@ -12,7 +12,6 @@ public class ConsoleUI
     public static  void displayNewLine(){
     	System.out.println();
     	}
-    }
     
     public static void displayInfo(String content){
     	System.out.println();
