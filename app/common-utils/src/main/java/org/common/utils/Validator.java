@@ -14,8 +14,9 @@ public class Validator {
 		List<String> invalidListofCommandLineArgs = new ArrayList<String>();
 		for (String commandLineArg : commandLineArgsFromTheCommandLine) {
 
+			String commanLineArgKey = commandLineArg.split("=")[0].replaceAll("--","");
 			for (CommandLineArgs commandLineArgConstant : CommandLineArgs.values()) {
-				if (commandLineArg.equalsIgnoreCase(commandLineArgConstant.commandLineArgAbbreviated())) {
+				if (commanLineArgKey.equalsIgnoreCase(commandLineArgConstant.commandLineArgAbbreviated())) {
 					commandLineArgMatch = true;
 					break;
 				}

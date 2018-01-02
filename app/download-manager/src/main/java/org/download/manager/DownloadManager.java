@@ -16,31 +16,17 @@ public class DownloadManager {
 		String protocol = "";
 		if (url.contains("ftp"))
 			protocol ="FTP";
-		else if (url.contains("http"))
+		else if (url.contains("http")) {
 			protocol = "HTTP";
-		else if (url.contains("https"))
-			protocol = "HTTPS";
-		else
-			protocol = "NA";
-		switch(url) {
-		case "FTP":
-			FTPDownloader ftpDownloader = new FTPDownloader(this.commandLineArgs);
-			ftpDownloader.download();
-		case "HTTP":
 			HttpDownloader httpDownloader = new HttpDownloader(this.commandLineArgs);
 			httpDownloader.download();
-		case "NA":
-			//todo
-			break;
-		default:
-			System.out.println("No match");
-			break;
-			
+		}
+		else if (url.contains("https")) {
+			protocol = "HTTPS";
+		}
+		else
+			protocol = "NA";
+		
 		}
 	}
 	
-	
-
-	
-	
-}
