@@ -1,11 +1,12 @@
 # getFast
 [![Build Status](https://travis-ci.org/devdil/getFast.svg?branch=master)](https://travis-ci.org/devdil/getFast)
 
-A simple, fast, multi-threaded cross platform downloader in java.
+*A simple, fast, multi-threaded cross platform downloader in java.*
 
-##Usage
+## Usage
 
  `getfast --<argument>=<value>`
+ 
  The arguments that can be passed are:
   --url=The download url
   --threads=Threads to maximize download performance
