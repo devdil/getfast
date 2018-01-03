@@ -7,7 +7,7 @@ import java.util.List;
 public class UsageHelper {
 	
 	public void showUsage() {
-		ConsoleUI.displayNewLineWithPound();
+		
 		ConsoleUI.displayInfo("Usage ");
 		ConsoleUI.displayInfo(" ");
 		ConsoleUI.displayInfo(ProductConstants.PRODUCT_NAME+" http://foobar.com/file.zip --argument=<value>");
@@ -18,7 +18,6 @@ public class UsageHelper {
 			ConsoleUI.displayInfo(commandLineArg.commandLineArgUsage());
 			ConsoleUI.displayInfo(" ");
 		}
-		ConsoleUI.displayNewLineWithPound();
 		
 	}
 	

@@ -92,11 +92,11 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 				endSize = (startSize+eachThreadDownloadsSize-1 > fileSize-1) ? fileSize-1 : (startSize + (eachThreadDownloadsSize-1));
 			}
 			
-			long start = System.currentTimeMillis();
+
 			
 			System.out.println("");
 			System.out.println("Downloading file...");
-			
+			downloadProgress.setStartTimeInMillisecs(System.currentTimeMillis());
 			for (int i=0; i< commandLineArg.getThreads(); i++) {
 				downloadThreads[i].start();
 			}
@@ -115,8 +115,6 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 				}
 				
 			}
-			
-			System.out.println("Finished in "+(System.currentTimeMillis() - start)/1000+" secs");
 		}
 		
 

@@ -5,7 +5,25 @@ private boolean isComplete = false;
 private boolean terminateNotifer = false;
 private volatile long bytesDownloadedTillNow;
 private volatile long totalBytesToBeDownloaded;
+private long startTimeInMillsecs;
+private long endTimeInMillisecs;
 
+
+public void setStartTimeInMillisecs(long startTimeInMillsecs) {
+	this.startTimeInMillsecs = startTimeInMillsecs;
+}
+
+public void setEndTimeInMillisecs(long endTimeInMillisecs) {
+	this.endTimeInMillisecs = endTimeInMillisecs;
+}
+
+public long getStartTimeInMillisecs() {
+	return this.startTimeInMillsecs;
+}
+
+public long getEndTimeInMillisecs() {
+	return this.endTimeInMillisecs;
+}
 
 public void setTotalBytesToBeDownloaded(long bytes) {
 	this.totalBytesToBeDownloaded = bytes;

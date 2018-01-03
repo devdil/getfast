@@ -45,8 +45,15 @@ public class ProgressNotifierThread implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if (progress == 100)
+			if (progress == 100) {
+				System.out.print("] ");
+				System.out.print(downloadProgress.getProgress()+"%");
+				downloadProgress.setEndTimeInMillisecs(System.currentTimeMillis());
+				System.out.println();
+				System.out.println("Finished in "+((downloadProgress.getEndTimeInMillisecs()-downloadProgress.getStartTimeInMillisecs())/1000+" secs"));			
 				break;
+			}
+				
 		}
 	}
 		
