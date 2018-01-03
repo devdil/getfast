@@ -7,7 +7,7 @@
 
  `getfast --<argument>=<value>`
  
- ..* The arguments that can be passed are:
+  ..* The arguments that can be passed are:
   ...--url=The download url
   ...--threads=Threads to maximize download performance
   ...--destination=Location to where you want the file to be downloaded.
