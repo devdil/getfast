@@ -10,6 +10,7 @@ public class Validator {
 	public static boolean areCommandLineArgsValid(String[] commandLineArgsFromTheCommandLine) {
 
 		boolean  commandLineArgMatch = false;
+		boolean  showHelpText = false;
 		boolean  atleastOneMismatch = false;
 		List<String> invalidListofCommandLineArgs = new ArrayList<String>();
 		
@@ -20,10 +21,15 @@ public class Validator {
 			String commanLineArgKey = commandLineArg.split("=")[0].replaceAll("--","");
 			for (CommandLineArgs commandLineArgConstant : CommandLineArgs.values()) {
 				if (commanLineArgKey.equalsIgnoreCase(commandLineArgConstant.commandLineArgAbbreviated())) {
+					if (commanLineArgKey.equalsIgnoreCase(CommandLineArgs.HELP.commandLineArgAbbreviated()))
+						showHelpText = true;
 					commandLineArgMatch = true;
 					break;
 				}
 			}
+			
+			if (showHelpText) 
+				break;
 			
 			if (!commandLineArgMatch) {
 				invalidListofCommandLineArgs.add(commandLineArg);
@@ -36,7 +42,7 @@ public class Validator {
 		}
 		
 		
-		if (atleastOneMismatch) {
+		if (atleastOneMismatch || showHelpText) {
 			UsageHelper usageHelper = new UsageHelper();
 			usageHelper.showUsage();
 			return false;

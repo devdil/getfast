@@ -6,7 +6,8 @@ public enum CommandLineArgs {
 	DESTINATION("destination", "The download location to the file .e.g. in Linux /home/johndoe/myfiles/"),
 	PROXY("proxy","Proxy address to be used if you are behing a firewall or restricted access"),
 	THREADS("threads","Parallel threads to maximize the download perfomance. The max threads is now 10"),
-	URL("url","The donwload url");
+	URL("url","The donwload url"),
+	HELP("help","The usage document for the utility");
 	
 	private String commandLineArgument;
 	private String usageDescription;
