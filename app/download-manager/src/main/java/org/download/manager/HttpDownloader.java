@@ -44,9 +44,12 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 		System.out.println("Contacting host...");
 		try {
 			 fileTobeDownloadedInfo = gatherFileInformationFromHost(this.commandLineArg);
-		} catch (IOException | URISyntaxException e1) {
+		} catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		}
+		catch(IOException io) {
+			io.printStackTrace();
 		}
 		
 		if (fileTobeDownloadedInfo != null) {
