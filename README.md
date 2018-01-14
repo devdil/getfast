@@ -1,4 +1,4 @@
-# getFast
+# getfast
 
 [![Build Status](https://travis-ci.org/devdil/getfast.svg?branch=master)](https://travis-ci.org/devdil/getfast)
 
