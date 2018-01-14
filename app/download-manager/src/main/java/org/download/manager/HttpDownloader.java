@@ -24,7 +24,7 @@ import org.apache.commons.io.FilenameUtils;
 
 public class HttpDownloader extends DownloaderModel implements Downloader {
 
-	private static int DEFAULT_MAX_CHUNK_SIZE = 3145728 ;
+	private static int DEFAULT_MAX_CHUNK_SIZE = 3145728 ; // TODO : come up with a good algorithm to calculate chunk size. this could pretty interestiong.
 	private DownloadProgress downloadProgress;
 	private static PoolingHttpClientConnectionManager httpConnectionManager;
 	private static CloseableHttpClient httpClient;
@@ -81,7 +81,7 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 			Thread[] downloadThreads= new Thread[workerThreads];
 			
 			long startSize = 0, endSize = eachThreadDownloadsSize-1;
-			for (int i = 0; i < this.commandLineArg.getThreads(); i++) {
+			for (int i = 0; i < workerThreads; i++) {
 				
 				String workerName = (i+1)+"";
 				httpClientForThread = HttpClients.custom().setConnectionManager(httpConnectionManager).build();
@@ -94,9 +94,7 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 				startSize = endSize + 1;
 				endSize = (startSize+eachThreadDownloadsSize-1 > fileSize-1) ? fileSize-1 : (startSize + (eachThreadDownloadsSize-1));
 			}
-			
-
-			
+		
 			System.out.println("");
 			System.out.println("Downloading file...");
 			downloadProgress.setStartTimeInMillisecs(System.currentTimeMillis());
@@ -104,10 +102,10 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 				downloadThreads[i].start();
 			}
 			
-
-			ProgressNotifierThread progressNotifierRunnable = new ProgressNotifierThread(downloadProgress);	
+			ProgressNotifierThread progressNotifierRunnable = new ProgressNotifierThread(downloadProgress, fileTobeDownloadedInfo, workerThreads);	
 			Thread progressNotifierThread = new Thread(progressNotifierRunnable);
 			progressNotifierThread.start(); 
+			
 			
 			for (int i=0; i< commandLineArg.getThreads(); i++) {
 				try {
@@ -162,7 +160,6 @@ public class HttpDownloader extends DownloaderModel implements Downloader {
 								fileToBeDownloaded.setCanbeDownloadedParallel(false);
 							}
 								
-							
 						}
 						if (header.getName().equalsIgnoreCase(HttpHeaders.CONTENT_LENGTH)) {
 							fileToBeDownloaded.setFileSize(Long.valueOf(header.getValue()));

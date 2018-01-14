@@ -4,11 +4,15 @@ import org.console.ui.*;
 public class ProgressNotifierThread implements Runnable {
 	
 	private DownloadProgress downloadProgress;
+	private FileTobeDownloadedInfo fileTobeDownloadedInfo;
 	private static String DOWNLOAD_BARS_THEME_TYPE = "#";
 	private static int BARS_USED = 50;
+	private static long workerThreads;
 	
-	public ProgressNotifierThread(DownloadProgress downloadProgress) {
+	public ProgressNotifierThread(DownloadProgress downloadProgress, FileTobeDownloadedInfo fileTobeDownloadedInfo, long workerThreads) {
 		this.downloadProgress = downloadProgress;
+		this.fileTobeDownloadedInfo = fileTobeDownloadedInfo;
+		this.workerThreads = workerThreads;
 	}
 	
 	public void run() {
@@ -51,10 +55,20 @@ public class ProgressNotifierThread implements Runnable {
 				downloadProgress.setEndTimeInMillisecs(System.currentTimeMillis());
 				System.out.println();
 				System.out.println("Finished in "+((downloadProgress.getEndTimeInMillisecs()-downloadProgress.getStartTimeInMillisecs())/1000+" secs"));			
+				try {
+					runFileAppenderService();	
+				}
+				catch (Exception e) {
+					
+				}
 				break;
-			}
-				
-		}
+			}		
+		}	
+	}
+
+	private void runFileAppenderService() {
+		// TODO Auto-generated method stub
+		
 	}
 		
 		
